@@ -17,6 +17,8 @@ public class DrawLine2D : MonoBehaviour
 
     public Color lineColor;
     public float lineWidth;
+    public GameObject parent;
+    private GameObject child;
 
     public virtual LineRenderer lineRenderer
     {
@@ -89,6 +91,11 @@ public class DrawLine2D : MonoBehaviour
                 }
             }
         }
+        if (Input.GetMouseButtonUp(0))
+        {
+            CreateDefaultLineRenderer();
+            CreateDefaultEdgeCollider2D();
+        }
     }
 
     protected virtual void Reset()
@@ -109,7 +116,10 @@ public class DrawLine2D : MonoBehaviour
 
     protected virtual void CreateDefaultLineRenderer()
     {
-        m_LineRenderer = gameObject.AddComponent<LineRenderer>();
+        child = new GameObject("line");
+        child.transform.parent = parent.transform;
+
+        m_LineRenderer = child.AddComponent<LineRenderer>();
         m_LineRenderer.positionCount = 0;
         m_LineRenderer.material = new Material(Shader.Find("UnityLibrary/Particles/Additive Scrolling UV"));
         m_LineRenderer.startColor = lineColor;
@@ -122,7 +132,7 @@ public class DrawLine2D : MonoBehaviour
 
     protected virtual void CreateDefaultEdgeCollider2D()
     {
-        m_EdgeCollider2D = gameObject.AddComponent<EdgeCollider2D>();
+        m_EdgeCollider2D = child.AddComponent<EdgeCollider2D>();
     }
 
 }

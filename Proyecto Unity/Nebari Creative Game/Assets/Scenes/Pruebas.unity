@@ -227,6 +227,7 @@ MonoBehaviour:
   m_Camera: {fileID: 519420031}
   lineColor: {r: 1, g: 1, b: 1, a: 1}
   lineWidth: 0.4
+  parent: {fileID: 1742701811}
 --- !u!4 &443333792 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3170663781293845468, guid: c8cf73175ad25554998bb8e4d2895e56,
