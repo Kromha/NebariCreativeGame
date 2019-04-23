@@ -62,10 +62,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\DeathScript.cs" />
+    <Compile Include="Assets\Scripts\DrawLine2D.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
     <Compile Include="Assets\Scripts\PlayerController.cs" />
     <Compile Include="Assets\Scripts\UITimeScript.cs" />
     <Compile Include="Assets\Scripts\WinScript.cs" />
+    <None Include="Assets\Materials\Additive-ScrollingUV.shader" />
+    <Reference Include="Cinemachine">
+      <HintPath>D:/TFM_Repositorio/Proyecto Unity/Nebari Creative Game/Library/ScriptAssemblies/Cinemachine.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.TextMeshPro.Editor">
       <HintPath>D:/TFM_Repositorio/Proyecto Unity/Nebari Creative Game/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
@@ -74,6 +79,9 @@
     </Reference>
     <Reference Include="Unity.CollabProxy.Editor">
       <HintPath>D:/TFM_Repositorio/Proyecto Unity/Nebari Creative Game/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="com.unity.cinemachine.editor">
+      <HintPath>D:/TFM_Repositorio/Proyecto Unity/Nebari Creative Game/Library/ScriptAssemblies/com.unity.cinemachine.editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro">
       <HintPath>D:/TFM_Repositorio/Proyecto Unity/Nebari Creative Game/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>

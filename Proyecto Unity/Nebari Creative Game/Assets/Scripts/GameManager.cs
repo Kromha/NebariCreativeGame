@@ -16,7 +16,7 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         actualTime += Time.deltaTime;
-        Debug.Log(actualTime);
+        //Debug.Log(actualTime);
     }
 
     public float getActualTime()

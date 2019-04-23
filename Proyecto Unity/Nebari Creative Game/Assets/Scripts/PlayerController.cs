@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour
     public float speed;
     public Vector2 initialSpeed;
     private Rigidbody2D rigid2D;
+    public int objetosRecogidos = 0;
 
     void Start()
     {
@@ -20,5 +21,14 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         rigid2D.velocity = speed * (rigid2D.velocity.normalized);
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.name.Contains("Recolectable"))
+        {
+            objetosRecogidos++;
+            Destroy(collision.gameObject);
+        }
     }
 }
