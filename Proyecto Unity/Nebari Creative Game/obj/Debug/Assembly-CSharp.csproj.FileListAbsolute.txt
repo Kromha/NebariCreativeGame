@@ -173,3 +173,5 @@ D:\TFM_Repositorio\Proyecto Unity\Nebari Creative Game\obj\Debug\Assembly-CSharp
 D:\TFM_Repositorio\Proyecto Unity\Nebari Creative Game\obj\Debug\Assembly-CSharp.csproj.CopyComplete
 D:\TFM_Repositorio\Proyecto Unity\Nebari Creative Game\obj\Debug\Assembly-CSharp.dll
 D:\TFM_Repositorio\Proyecto Unity\Nebari Creative Game\obj\Debug\Assembly-CSharp.pdb
+D:\TFM_Repositorio\Proyecto Unity\Nebari Creative Game\Temp\bin\Debug\Cinemachine.dll
+D:\TFM_Repositorio\Proyecto Unity\Nebari Creative Game\Temp\bin\Debug\com.unity.cinemachine.editor.dll

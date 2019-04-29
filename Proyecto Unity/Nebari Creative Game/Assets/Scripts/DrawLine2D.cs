@@ -73,6 +73,7 @@ public class DrawLine2D : MonoBehaviour
 
     protected virtual void Update()
     {
+        /*
         if (Input.GetMouseButtonDown(0))
         {
             Reset();
@@ -95,6 +96,36 @@ public class DrawLine2D : MonoBehaviour
         {
             CreateDefaultLineRenderer();
             CreateDefaultEdgeCollider2D();
+        }*/
+
+        //Hay contacto
+        if (Input.touchCount > 0)
+        {
+            Touch touch = Input.GetTouch(0);
+
+            if (touch.phase == TouchPhase.Began)
+            {
+                Reset();
+            }
+            if (touch.phase == TouchPhase.Moved)
+            {
+                Vector2 mousePosition = m_Camera.ScreenToWorldPoint(touch.position);
+                if (!m_Points.Contains(mousePosition))
+                {
+                    m_Points.Add(mousePosition);
+                    m_LineRenderer.positionCount = m_Points.Count;
+                    m_LineRenderer.SetPosition(m_LineRenderer.positionCount - 1, mousePosition);
+                    if (m_EdgeCollider2D != null && m_AddCollider && m_Points.Count > 1)
+                    {
+                        m_EdgeCollider2D.points = m_Points.ToArray();
+                    }
+                }
+            }
+            if (touch.phase == TouchPhase.Ended)
+            {
+                CreateDefaultLineRenderer();
+                CreateDefaultEdgeCollider2D();
+            }
         }
     }
 
