@@ -73,7 +73,7 @@ public class DrawLine2D : MonoBehaviour
 
     protected virtual void Update()
     {
-        /*
+        
         if (Input.GetMouseButtonDown(0))
         {
             Reset();
@@ -96,8 +96,8 @@ public class DrawLine2D : MonoBehaviour
         {
             CreateDefaultLineRenderer();
             CreateDefaultEdgeCollider2D();
-        }*/
-
+        }
+        /*
         //Hay contacto
         if (Input.touchCount > 0)
         {
@@ -127,6 +127,7 @@ public class DrawLine2D : MonoBehaviour
                 CreateDefaultEdgeCollider2D();
             }
         }
+        */
     }
 
     protected virtual void Reset()
