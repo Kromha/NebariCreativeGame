@@ -65,6 +65,7 @@
     <Compile Include="Assets\Scripts\DrawLine2D.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
     <Compile Include="Assets\Scripts\PlayerController.cs" />
+    <Compile Include="Assets\Scripts\Pointable.cs" />
     <Compile Include="Assets\Scripts\UITimeScript.cs" />
     <Compile Include="Assets\Scripts\WinScript.cs" />
     <None Include="Assets\Materials\Additive-ScrollingUV.shader" />

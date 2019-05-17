@@ -25,6 +25,8 @@ public class PlayerController : MonoBehaviour
     private Color blueColor;
     private Color orangeColor;
     private Vector2 lastSpeed;
+    private int points;
+    private UITimeScript uITimeScript;
 
 
     void Start()
@@ -36,6 +38,9 @@ public class PlayerController : MonoBehaviour
         redColor = new Color();
         blueColor = new Color();
         orangeColor = new Color();
+
+        points = 0;
+        uITimeScript = GameObject.Find("UIManager").GetComponent<UITimeScript>();
 
         ColorUtility.TryParseHtmlString(redHexa, out redColor);
         ColorUtility.TryParseHtmlString(blueHexa, out blueColor);
@@ -67,25 +72,28 @@ public class PlayerController : MonoBehaviour
         if (collision.name.Contains("Recolectable"))
         {
             objetosRecogidos++;
+            addPoints(collision.gameObject);
             Destroy(collision.gameObject);
         }
         else if (collision.name.Contains("OrangeP"))
         {
             state = State.orange;
             this.gameObject.GetComponent<SpriteRenderer>().color = orangeColor;
+            addPoints(collision.gameObject);
             Destroy(collision.gameObject);
-
         }
         else if (collision.name.Contains("RedP"))
         {
             state = State.red;
             this.gameObject.GetComponent<SpriteRenderer>().color = redColor;
+            addPoints(collision.gameObject);
             Destroy(collision.gameObject);
         }
         else if (collision.name.Contains("BlueP"))
         {
             state = State.blue;
             this.gameObject.GetComponent<SpriteRenderer>().color = blueColor;
+            addPoints(collision.gameObject);
             Destroy(collision.gameObject);
         }
     }
@@ -93,18 +101,32 @@ public class PlayerController : MonoBehaviour
     {
         if (collision.collider.name.Contains("OrangeO") && state.Equals(State.orange))
         {
+            addPoints(collision.gameObject);
             Destroy(collision.gameObject);
             rigid2D.velocity = lastSpeed;
         }
         else if (collision.collider.name.Contains("RedO") && state.Equals(State.red))
         {
+            addPoints(collision.gameObject);
             Destroy(collision.gameObject);
             rigid2D.velocity = lastSpeed;
         }
         else if (collision.collider.name.Contains("BlueO") && state.Equals(State.blue))
         {
+            addPoints(collision.gameObject);
             Destroy(collision.gameObject);
             rigid2D.velocity = lastSpeed;
+        }
+    }
+
+    private void addPoints(GameObject go)
+    {
+        Pointable pointable = go.GetComponent<Pointable>();
+
+        if (pointable != null)
+        {
+            points += pointable.getPoints();
+            uITimeScript.setPoints(points);
         }
     }
 }
