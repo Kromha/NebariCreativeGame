@@ -129,4 +129,9 @@ public class PlayerController : MonoBehaviour
             uITimeScript.setPoints(points);
         }
     }
+
+    public Rigidbody2D GetRigidbody2D()
+    {
+        return rigid2D;
+    }
 }
