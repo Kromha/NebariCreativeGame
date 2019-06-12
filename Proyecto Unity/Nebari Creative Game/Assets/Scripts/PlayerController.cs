@@ -130,6 +130,11 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    public int getPoints()
+    {
+        return points;
+    }
+
     public Rigidbody2D GetRigidbody2D()
     {
         return rigid2D;

@@ -27,7 +27,7 @@ public class UITimeScript : MonoBehaviour
         timer.text = gameManager.getActualTime().ToString("F1");
     }
 
-    private void resetLevel()
+    public void resetLevel()
     {
         Debug.Log("RESET BUTTON!");
         SceneManager.LoadScene(SceneManager.GetActiveScene().name, LoadSceneMode.Single);
@@ -36,5 +36,10 @@ public class UITimeScript : MonoBehaviour
     public void setPoints(int p)
     {
         pointsText.text = p.ToString();
+    }
+
+    public void goLevelMenu()
+    {
+        SceneManager.LoadScene("Menu_niveles");
     }
 }

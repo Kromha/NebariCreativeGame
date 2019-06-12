@@ -121,7 +121,31 @@ public class GameManager : MonoBehaviour
         //Initialize player
         active = true;
         waiting = false;
-        GameObject.Find("Player").GetComponent<PlayerController>().GetRigidbody2D().velocity = playerSpeed;
+        
+        GameObject data = GameObject.Find("Data");
+
+        if(data != null)
+        {
+            Datascript datascript = data.GetComponent<Datascript>();
+
+            switch (datascript.mode)
+            {
+                case Datascript.Mode.Easy:
+                    GameObject.Find("Player").GetComponent<PlayerController>().GetRigidbody2D().velocity = playerSpeed * 0.75f;
+                    break;
+                case Datascript.Mode.Medium:
+                    GameObject.Find("Player").GetComponent<PlayerController>().GetRigidbody2D().velocity = playerSpeed;
+                    break;
+                case Datascript.Mode.Hard:
+                    GameObject.Find("Player").GetComponent<PlayerController>().GetRigidbody2D().velocity = playerSpeed * 1.5f;
+                    break;
+            }
+        }else
+        {
+            //Medium as default mode
+            GameObject.Find("Player").GetComponent<PlayerController>().GetRigidbody2D().velocity = playerSpeed;
+        }
+
     }
 
     public void InitializeCameraPlayer()
