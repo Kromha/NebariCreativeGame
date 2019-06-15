@@ -30,6 +30,7 @@ public class GameManager : MonoBehaviour
     private float slowTime;
     private float deltaImage;
     public Image barraSlow;
+    public GameObject SlowDown;
 
     // Start is called before the first frame update
     void Start()
@@ -94,7 +95,7 @@ public class GameManager : MonoBehaviour
                     }
                     lastPosition = newPosition;
                     auxCamera.transform.Translate(new Vector3(directionVector.x, directionVector.y, 0) * speed);
-                    newPosition = newPosition = cameraTransform.position;
+                    newPosition = cameraTransform.position;
 
                 }
             }
@@ -160,12 +161,20 @@ public class GameManager : MonoBehaviour
             {
                 case Datascript.Mode.Easy:
                     GameObject.Find("Player").GetComponent<PlayerController>().GetRigidbody2D().velocity = playerSpeed * 0.75f;
+                    GameObject.Find("InputManager").GetComponent<DrawLine2D>().maxDrawTime = 10.0f;
+                    GameObject.Find("InputManager").GetComponent<DrawLine2D>().recalculateDeltaImage(10.0f);
+                    SlowDown.SetActive(true);
                     break;
                 case Datascript.Mode.Medium:
                     GameObject.Find("Player").GetComponent<PlayerController>().GetRigidbody2D().velocity = playerSpeed;
+                    GameObject.Find("InputManager").GetComponent<DrawLine2D>().maxDrawTime = 7.0f;
+                    GameObject.Find("InputManager").GetComponent<DrawLine2D>().recalculateDeltaImage(7.0f);
+                    SlowDown.SetActive(true);
                     break;
                 case Datascript.Mode.Hard:
                     GameObject.Find("Player").GetComponent<PlayerController>().GetRigidbody2D().velocity = playerSpeed * 1.5f;
+                    GameObject.Find("InputManager").GetComponent<DrawLine2D>().maxDrawTime = 5.0f;
+                    GameObject.Find("InputManager").GetComponent<DrawLine2D>().recalculateDeltaImage(5.0f);
                     break;
             }
         }else

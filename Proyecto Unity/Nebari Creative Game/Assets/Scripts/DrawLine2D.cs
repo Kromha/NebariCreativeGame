@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class DrawLine2D : MonoBehaviour
 {
@@ -20,6 +21,11 @@ public class DrawLine2D : MonoBehaviour
     public GameObject parent;
     private GameObject child;
     public bool draw;
+
+    private float drawTimer;
+    public float maxDrawTime;
+    private float deltaImage;
+    public Image circle;
 
     public virtual LineRenderer lineRenderer
     {
@@ -56,6 +62,9 @@ public class DrawLine2D : MonoBehaviour
     protected virtual void Awake()
     {
         draw = false;
+        drawTimer = 0.0f;
+        deltaImage = 1.0f / maxDrawTime;
+
         if (m_LineRenderer == null)
         {
             Debug.LogWarning("DrawLine: Line Renderer not assigned, Adding and Using default Line Renderer.");
@@ -86,6 +95,10 @@ public class DrawLine2D : MonoBehaviour
                 Vector2 mousePosition = m_Camera.ScreenToWorldPoint(Input.mousePosition);
                 if (!m_Points.Contains(mousePosition))
                 {
+                    //Interface
+                    drawTimer += Time.deltaTime;
+                    circle.fillAmount -= deltaImage * Time.deltaTime;
+
                     m_Points.Add(mousePosition);
                     m_LineRenderer.positionCount = m_Points.Count;
                     m_LineRenderer.SetPosition(m_LineRenderer.positionCount - 1, mousePosition);
@@ -115,6 +128,10 @@ public class DrawLine2D : MonoBehaviour
                     Vector2 mousePosition = m_Camera.ScreenToWorldPoint(touch.position);
                     if (!m_Points.Contains(mousePosition))
                     {
+                         //Interface
+                        drawTimer += Time.deltaTime;
+                        circle.fillAmount -= deltaImage * Time.deltaTime;
+
                         m_Points.Add(mousePosition);
                         m_LineRenderer.positionCount = m_Points.Count;
                         m_LineRenderer.SetPosition(m_LineRenderer.positionCount - 1, mousePosition);
@@ -131,6 +148,10 @@ public class DrawLine2D : MonoBehaviour
                 }
             }
             */
+            if (drawTimer >= maxDrawTime)
+            {
+                draw = false;
+            }
         }
     }
 
@@ -171,4 +192,8 @@ public class DrawLine2D : MonoBehaviour
         m_EdgeCollider2D = child.AddComponent<EdgeCollider2D>();
     }
 
+    public void recalculateDeltaImage(float time)
+    {
+        deltaImage = 360 / time;
+    }
 }
