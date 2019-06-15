@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class WinScript : MonoBehaviour
 {
@@ -79,8 +80,22 @@ public class WinScript : MonoBehaviour
                 star1.color = new Color(255, 0, 0);
                 star2.color = new Color(255, 0, 0);
                 star3.color = new Color(255, 0, 0);
-            } 
+            }
 
+            if (PlayerPrefs.HasKey(SceneManager.GetActiveScene().name))
+            {
+                if(numStars > PlayerPrefs.GetInt(SceneManager.GetActiveScene().name))
+                {
+                    PlayerPrefs.DeleteKey(SceneManager.GetActiveScene().name);
+                    PlayerPrefs.SetInt(SceneManager.GetActiveScene().name, numStars);
+                    PlayerPrefs.Save();
+                }
+            }
+            else
+            {
+                PlayerPrefs.SetInt(SceneManager.GetActiveScene().name, numStars);
+                PlayerPrefs.Save();
+            }
            
         }
     }

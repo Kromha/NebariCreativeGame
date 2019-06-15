@@ -194,6 +194,6 @@ public class DrawLine2D : MonoBehaviour
 
     public void recalculateDeltaImage(float time)
     {
-        deltaImage = 360 / time;
+        deltaImage = 1.0f / time;
     }
 }

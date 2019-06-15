@@ -12,7 +12,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Menus/Menu_niveles.unity
     guid: 9d2b01d87515630439588169d974ec82
   - enabled: 1
-    path: Assets/Scenes/Pruebas.unity
+    path: Assets/Scenes/1.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
     path: Assets/Scenes/Tiled.unity
