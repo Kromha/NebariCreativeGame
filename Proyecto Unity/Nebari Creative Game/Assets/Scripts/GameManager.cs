@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Cinemachine;
+using UnityEngine.UI;
+using UnityEngine.Rendering.PostProcessing;
 
 public class GameManager : MonoBehaviour
 {
@@ -14,18 +16,30 @@ public class GameManager : MonoBehaviour
     private Vector2 directionVector;
     private Vector3 newPosition;
     private Vector3 lastPosition;
+    private GameObject events;
 
     public CinemachineVirtualCamera auxCamera;
+    public GameObject mainCamera;
     public Transform cameraTransform;
     public Transform finalPoint;
     public Vector2 playerSpeed;
     public float speed = 0.5f;
+
+    private bool slow = false;
+    public float maxSlowTime;
+    private float slowTime;
+    private float deltaImage;
+    public Image barraSlow;
 
     // Start is called before the first frame update
     void Start()
     {
         actualTime = 0.0f;
         InitializeAnimation();
+        slowTime = 0.0f;
+        deltaImage = barraSlow.GetComponent<RectTransform>().rect.height / maxSlowTime;
+        events = GameObject.Find("EventSystem");
+        events.SetActive(false);
     }
 
     // Update is called once per frame
@@ -93,6 +107,20 @@ public class GameManager : MonoBehaviour
                 }
             }
         }
+        //Ralentización del tiempo de juego
+        if (slow)
+        {
+            slowTime += Time.deltaTime;
+            if(slowTime >= maxSlowTime)
+            {
+                slowTimeFunction();
+            }
+            else
+            {
+                barraSlow.GetComponent<RectTransform>().sizeDelta = new Vector2(barraSlow.GetComponent<RectTransform>().rect.width, barraSlow.GetComponent<RectTransform>().rect.height - Time.deltaTime * deltaImage);
+            }
+
+        }
     }
 
     public float getActualTime()
@@ -145,7 +173,8 @@ public class GameManager : MonoBehaviour
             //Medium as default mode
             GameObject.Find("Player").GetComponent<PlayerController>().GetRigidbody2D().velocity = playerSpeed;
         }
-
+        events.SetActive(true);
+        GameObject.Find("InputManager").GetComponent<DrawLine2D>().draw = true;
     }
 
     public void InitializeCameraPlayer()
@@ -164,5 +193,20 @@ public class GameManager : MonoBehaviour
         lastPosition = new Vector3(100, 100, 100);
         newPosition = new Vector3(-50, 10, 34);
         auxTime = 0.0f;
+    }
+
+    public void slowTimeFunction()
+    {
+        if (slow){
+            slow = false;
+            Time.timeScale = 1.0f;
+            mainCamera.GetComponent<PostProcessVolume>().enabled = false;
+        }
+        else
+        {
+            slow = true;
+            Time.timeScale = 0.5f;
+            mainCamera.GetComponent<PostProcessVolume>().enabled = true;
+        }
     }
 }

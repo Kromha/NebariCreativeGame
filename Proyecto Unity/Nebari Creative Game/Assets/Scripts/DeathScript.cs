@@ -7,6 +7,9 @@ public class DeathScript : MonoBehaviour
 {
     public GameObject Ingame;
     public GameObject End;
+    public Image star1;
+    public Image star2;
+    public Image star3;
 
     void OnTriggerEnter2D(Collider2D col)
     {
@@ -20,6 +23,9 @@ public class DeathScript : MonoBehaviour
             Text score = GameObject.Find("ScoreNum").GetComponent<Text>();
             score.text = GameObject.Find("Player").GetComponent<PlayerController>().getPoints().ToString();
             Destroy(GameObject.Find("Player"));
+            star1.color = new Color(155, 155, 155);
+            star2.color = new Color(155, 155, 155);
+            star3.color = new Color(155, 155, 155);
         }
     }
 }

@@ -19,6 +19,7 @@ public class DrawLine2D : MonoBehaviour
     public float lineWidth;
     public GameObject parent;
     private GameObject child;
+    public bool draw;
 
     public virtual LineRenderer lineRenderer
     {
@@ -54,6 +55,7 @@ public class DrawLine2D : MonoBehaviour
 
     protected virtual void Awake()
     {
+        draw = false;
         if (m_LineRenderer == null)
         {
             Debug.LogWarning("DrawLine: Line Renderer not assigned, Adding and Using default Line Renderer.");
@@ -73,43 +75,15 @@ public class DrawLine2D : MonoBehaviour
 
     protected virtual void Update()
     {
-        
-        if (Input.GetMouseButtonDown(0))
+        if (draw)
         {
-            Reset();
-        }
-        if (Input.GetMouseButton(0))
-        {
-            Vector2 mousePosition = m_Camera.ScreenToWorldPoint(Input.mousePosition);
-            if (!m_Points.Contains(mousePosition))
-            {
-                m_Points.Add(mousePosition);
-                m_LineRenderer.positionCount = m_Points.Count;
-                m_LineRenderer.SetPosition(m_LineRenderer.positionCount - 1, mousePosition);
-                if (m_EdgeCollider2D != null && m_AddCollider && m_Points.Count > 1)
-                {
-                    m_EdgeCollider2D.points = m_Points.ToArray();
-                }
-            }
-        }
-        if (Input.GetMouseButtonUp(0))
-        {
-            CreateDefaultLineRenderer();
-            CreateDefaultEdgeCollider2D();
-        }
-        /*
-        //Hay contacto
-        if (Input.touchCount > 0)
-        {
-            Touch touch = Input.GetTouch(0);
-
-            if (touch.phase == TouchPhase.Began)
+            if (Input.GetMouseButtonDown(0))
             {
                 Reset();
             }
-            if (touch.phase == TouchPhase.Moved)
+            if (Input.GetMouseButton(0))
             {
-                Vector2 mousePosition = m_Camera.ScreenToWorldPoint(touch.position);
+                Vector2 mousePosition = m_Camera.ScreenToWorldPoint(Input.mousePosition);
                 if (!m_Points.Contains(mousePosition))
                 {
                     m_Points.Add(mousePosition);
@@ -121,13 +95,43 @@ public class DrawLine2D : MonoBehaviour
                     }
                 }
             }
-            if (touch.phase == TouchPhase.Ended)
+            if (Input.GetMouseButtonUp(0))
             {
                 CreateDefaultLineRenderer();
                 CreateDefaultEdgeCollider2D();
             }
+            /*
+            //Hay contacto
+            if (Input.touchCount > 0)
+            {
+                Touch touch = Input.GetTouch(0);
+
+                if (touch.phase == TouchPhase.Began)
+                {
+                    Reset();
+                }
+                if (touch.phase == TouchPhase.Moved)
+                {
+                    Vector2 mousePosition = m_Camera.ScreenToWorldPoint(touch.position);
+                    if (!m_Points.Contains(mousePosition))
+                    {
+                        m_Points.Add(mousePosition);
+                        m_LineRenderer.positionCount = m_Points.Count;
+                        m_LineRenderer.SetPosition(m_LineRenderer.positionCount - 1, mousePosition);
+                        if (m_EdgeCollider2D != null && m_AddCollider && m_Points.Count > 1)
+                        {
+                            m_EdgeCollider2D.points = m_Points.ToArray();
+                        }
+                    }
+                }
+                if (touch.phase == TouchPhase.Ended)
+                {
+                    CreateDefaultLineRenderer();
+                    CreateDefaultEdgeCollider2D();
+                }
+            }
+            */
         }
-        */
     }
 
     protected virtual void Reset()
