@@ -22,17 +22,18 @@ public class LevelsMenu : MonoBehaviour
                     GameObject star1 = levels[i].transform.Find("Stars_1").gameObject;
                     star1.GetComponent<Image>().color = new Color(230, 30, 87);
                     GameObject star2 = levels[i].transform.Find("Stars_2").gameObject;
-                    star1.GetComponent<Image>().color = new Color(230, 30, 87);
+                    star2.GetComponent<Image>().color = new Color(230, 30, 87);
                 }
                 else if(numStars == 3)
                 {
                     GameObject star1 = levels[i].transform.Find("Stars_1").gameObject;
                     star1.GetComponent<Image>().color = new Color(230, 30, 87);
                     GameObject star2 = levels[i].transform.Find("Stars_2").gameObject;
-                    star1.GetComponent<Image>().color = new Color(230, 30, 87);
+                    star2.GetComponent<Image>().color = new Color(230, 30, 87);
                     GameObject star3 = levels[i].transform.Find("Stars_3").gameObject;
-                    star1.GetComponent<Image>().color = new Color(230, 30, 87);
+                    star3.GetComponent<Image>().color = new Color(230, 30, 87);
                 }
+                Debug.Log("Nivel " + (i + 1).ToString() + ": Numero de estrellas " + numStars);
             }
         }
     }
