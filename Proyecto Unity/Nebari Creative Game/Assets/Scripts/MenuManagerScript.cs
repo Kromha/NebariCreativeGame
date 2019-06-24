@@ -8,11 +8,13 @@ public class MenuManagerScript : MonoBehaviour
 {
     public void goLevels()
     {
+        playFX();
         SceneManager.LoadScene("Menu_niveles",LoadSceneMode.Single);
     }
 
     public void goExit()
     {
+        playFX();
         Application.Quit();
     }
 
@@ -28,6 +30,8 @@ public class MenuManagerScript : MonoBehaviour
         GameObject.Find("EasyText").GetComponent<Text>().color = Selected;
         GameObject.Find("MediumText").GetComponent<Text>().color = notSelected;
         GameObject.Find("HardText").GetComponent<Text>().color = notSelected;
+
+        playFX();
     }
 
     public void changeToMedium()
@@ -42,6 +46,8 @@ public class MenuManagerScript : MonoBehaviour
         GameObject.Find("EasyText").GetComponent<Text>().color = notSelected;
         GameObject.Find("MediumText").GetComponent<Text>().color = Selected;
         GameObject.Find("HardText").GetComponent<Text>().color = notSelected;
+
+        playFX();
     }
 
     public void changeToHard()
@@ -56,5 +62,16 @@ public class MenuManagerScript : MonoBehaviour
         GameObject.Find("EasyText").GetComponent<Text>().color = notSelected;
         GameObject.Find("MediumText").GetComponent<Text>().color = notSelected;
         GameObject.Find("HardText").GetComponent<Text>().color = Selected;
+
+        playFX();
+    }
+
+    public void playFX()
+    {
+        GameObject soundManager = GameObject.Find("SoundManager");
+        if (soundManager != null)
+        {
+            soundManager.GetComponent<SoundManager>().playClickMenu();
+        }
     }
 }

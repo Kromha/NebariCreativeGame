@@ -11,4 +11,12 @@ public class Pointable : MonoBehaviour
         return points;
    }
 
+   public void playSoundFX()
+   {
+        GameObject soundManager = GameObject.Find("SoundManager");
+        if (soundManager != null)
+        {
+            soundManager.GetComponent<SoundManager>().playPick();
+        }
+    }
 }

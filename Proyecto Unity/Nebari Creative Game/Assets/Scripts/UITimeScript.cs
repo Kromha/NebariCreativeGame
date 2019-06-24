@@ -37,9 +37,18 @@ public class UITimeScript : MonoBehaviour
     {
         pointsText.text = p.ToString();
     }
+    public void changeMusic()
+    {
+        GameObject soundManager = GameObject.Find("SoundManager");
+        if (soundManager != null)
+        {
+            soundManager.GetComponent<SoundManager>().ToMenuMusic();
+        }
+    }
 
     public void goLevelMenu()
     {
+        changeMusic();
         SceneManager.LoadScene("Menu_niveles");
     }
 }

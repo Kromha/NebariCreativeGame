@@ -356,7 +356,7 @@ PrefabInstance:
     - target: {fileID: 3330364724098044495, guid: 70201320e466dfc469785f28b059a935,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -28.15474
+      value: -28.151512
       objectReference: {fileID: 0}
     - target: {fileID: 3330364724098044495, guid: 70201320e466dfc469785f28b059a935,
         type: 3}
@@ -412,6 +412,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_ShowCameraFrustum
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3330364724098044594, guid: 70201320e466dfc469785f28b059a935,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 70201320e466dfc469785f28b059a935, type: 3}
@@ -2129,7 +2134,7 @@ PrefabInstance:
     - target: {fileID: 3330364724098044495, guid: 70201320e466dfc469785f28b059a935,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -28.15474
+      value: -28.151512
       objectReference: {fileID: 0}
     - target: {fileID: 3330364724098044495, guid: 70201320e466dfc469785f28b059a935,
         type: 3}

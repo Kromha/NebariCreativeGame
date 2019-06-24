@@ -37,13 +37,35 @@ public class LevelsMenu : MonoBehaviour
             }
         }
     }
+
+    public void changeMusic()
+    {
+        GameObject soundManager = GameObject.Find("SoundManager");
+        if(soundManager != null)
+        {
+            soundManager.GetComponent<SoundManager>().ToGamePlayMusic();
+        }
+    }
+    public void playFX()
+    {
+        GameObject soundManager = GameObject.Find("SoundManager");
+        if (soundManager != null)
+        {
+            soundManager.GetComponent<SoundManager>().playClickMenu();
+        }
+    }
+
     public void GoBack()
     {
+        playFX();
         SceneManager.LoadScene("Menu_principal");
     }
 
     public void GoLevel1()
     {
+        playFX();
         SceneManager.LoadScene("1");
+        changeMusic();
+
     }
 }

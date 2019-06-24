@@ -11,11 +11,21 @@ public class DeathScript : MonoBehaviour
     public Image star2;
     public Image star3;
 
+    public void playLoseFX()
+    {
+        GameObject soundManager = GameObject.Find("SoundManager");
+        if (soundManager != null)
+        {
+            soundManager.GetComponent<SoundManager>().playLose();
+        }
+    }
     void OnTriggerEnter2D(Collider2D col)
     {
         if (col.gameObject.name.Equals("Player"))
         {
             Debug.Log("YOU LOSE!");
+
+            playLoseFX();
 
             Ingame.SetActive(false);
             End.SetActive(true);

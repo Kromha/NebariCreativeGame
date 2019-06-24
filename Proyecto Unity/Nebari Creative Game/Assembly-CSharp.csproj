@@ -70,6 +70,7 @@
     <Compile Include="Assets\Scripts\MenuManagerScript.cs" />
     <Compile Include="Assets\Scripts\PlayerController.cs" />
     <Compile Include="Assets\Scripts\Pointable.cs" />
+    <Compile Include="Assets\Scripts\SoundManager.cs" />
     <Compile Include="Assets\Scripts\UITimeScript.cs" />
     <Compile Include="Assets\Scripts\WinScript.cs" />
     <None Include="Assets\PostProcessing\Shaders\Builtins\FinalPass.shader" />

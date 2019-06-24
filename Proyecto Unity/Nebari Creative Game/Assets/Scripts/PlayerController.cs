@@ -104,18 +104,24 @@ public class PlayerController : MonoBehaviour
             addPoints(collision.gameObject);
             Destroy(collision.gameObject);
             rigid2D.velocity = lastSpeed;
+            playBreakFX();
         }
         else if (collision.collider.name.Contains("RedO") && state.Equals(State.red))
         {
             addPoints(collision.gameObject);
             Destroy(collision.gameObject);
             rigid2D.velocity = lastSpeed;
+            playBreakFX();
         }
         else if (collision.collider.name.Contains("BlueO") && state.Equals(State.blue))
         {
             addPoints(collision.gameObject);
             Destroy(collision.gameObject);
             rigid2D.velocity = lastSpeed;
+            playBreakFX();
+        }else
+        {
+            playCollisionFX();
         }
     }
 
@@ -125,8 +131,27 @@ public class PlayerController : MonoBehaviour
 
         if (pointable != null)
         {
+            pointable.playSoundFX();
             points += pointable.getPoints();
             uITimeScript.setPoints(points);
+        }
+    }
+
+    public void playCollisionFX()
+    {
+        GameObject soundManager = GameObject.Find("SoundManager");
+        if (soundManager != null)
+        {
+            soundManager.GetComponent<SoundManager>().playCollision();
+        }
+    }
+
+    public void playBreakFX()
+    {
+        GameObject soundManager = GameObject.Find("SoundManager");
+        if (soundManager != null)
+        {
+            soundManager.GetComponent<SoundManager>().playBreak();
         }
     }
 

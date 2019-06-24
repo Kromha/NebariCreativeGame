@@ -210,12 +210,36 @@ public class GameManager : MonoBehaviour
             slow = false;
             Time.timeScale = 1.0f;
             mainCamera.GetComponent<PostProcessVolume>().enabled = false;
+
+            //Sonido vuelta a la normalidad
+            GameObject soundManager = GameObject.Find("SoundManager");
+            if (soundManager != null)
+            {
+                soundManager.GetComponent<SoundManager>().OutSlowDown();
+            }
         }
         else
         {
             slow = true;
             Time.timeScale = 0.5f;
             mainCamera.GetComponent<PostProcessVolume>().enabled = true;
+
+            //Sonido para Slow Down
+            playSlowDownFX();
+            GameObject soundManager = GameObject.Find("SoundManager");
+            if (soundManager != null)
+            {
+                soundManager.GetComponent<SoundManager>().OnSlowDown();
+            }
+        }
+    }
+
+    public void playSlowDownFX()
+    {
+        GameObject soundManager = GameObject.Find("SoundManager");
+        if (soundManager != null)
+        {
+            soundManager.GetComponent<SoundManager>().playSlowDown();
         }
     }
 }

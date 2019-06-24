@@ -26,12 +26,21 @@ public class WinScript : MonoBehaviour
             maxpoints += i.getPoints();
         }
     }
-
+    public void playWinFX()
+    {
+        GameObject soundManager = GameObject.Find("SoundManager");
+        if (soundManager != null)
+        {
+            soundManager.GetComponent<SoundManager>().playWinFX();
+        }
+    }
     void OnTriggerEnter2D(Collider2D col)
     {
         if (col.gameObject.name.Equals("Player"))
         {
             Debug.Log("YOU WIN!");
+
+            playWinFX();
 
             Ingame.SetActive(false);
             End.SetActive(true);

@@ -85,7 +85,7 @@ public class DrawLine2D : MonoBehaviour
     protected virtual void Update()
     {
         if (draw)
-        {
+        {  
             if (Input.GetMouseButtonDown(0))
             {
                 Reset();
