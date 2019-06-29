@@ -1,6 +1,6 @@
 Android
 PlayerPath?
-D:/UOC/Año 2/TFM/Entrega 4/Ejecutables/Movil (Plataforma destino)/NCG.apk
+D:/TFM_Repositorio/Ejecutables/Android/NCG.apk
 SceneListBegin?
 Assets/Scenes/Menus/Menu_principal.unity
 Assets/Scenes/Menus/Menu_niveles.unity
