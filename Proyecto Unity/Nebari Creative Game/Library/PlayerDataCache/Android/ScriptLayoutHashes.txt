@@ -1,11 +1,10 @@
 Android
 PlayerPath?
-D:/UOC/Año 2/TFM/Entrega 3/NCG.apk
+D:/UOC/Año 2/TFM/Entrega 4/Ejecutables/Movil (Plataforma destino)/NCG.apk
 SceneListBegin?
 Assets/Scenes/Menus/Menu_principal.unity
 Assets/Scenes/Menus/Menu_niveles.unity
 Assets/Scenes/1.unity
-Assets/Scenes/Tiled.unity
 SceneListEnd?
 a1f19ad47d3094e235f21b74dfc423a8 Unity.Postprocessing.Runtime.dll:UnityEngine.Rendering.PostProcessing.PostProcessLayer
 23d669c8bf2983ca4a3df160658318a6 Cinemachine.dll:Cinemachine.CinemachineStateDrivenCamera
@@ -207,6 +206,7 @@ fb6a1ea36b4f6ef5948d283d93760765 UnityEngine.GoogleAudioSpatializer.dll:UnityEng
 7f9efb06b16d67d96191da595af6c021 Assembly-CSharp.dll:.DrawLine2D
 6225eb0973ab0af667bc5f9d1b1b18de Cinemachine.dll:Cinemachine.CinemachineCollider
 bd50beb95120324d8c4e8386692b6e82 Cinemachine.dll:Cinemachine.CinemachineBlenderSettings
+e845ca49385bc0478757202a9b590e40 Assembly-CSharp.dll:.SoundManager
 c0201dbecd85f700bcdff493a272631d Cinemachine.dll:Cinemachine.CinemachineImpulseSource
 2c0cd09ba7c7dd22425dffe7f73681d3 Assembly-CSharp.dll:.PlayerController
 a4f0a4f62100f1a4fb5cbe0e00dde83f Unity.TextMeshPro.dll:TMPro.TextMeshProUGUI
